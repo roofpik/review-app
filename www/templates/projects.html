@@ -1,0 +1,22 @@
+<ion-view view-title="Select Project">
+    <ion-content class="has-header">
+        <ion-subheader-bar>
+            <label class="item item-input item-floating-label">
+                <span class="input-label">Search Localit, Project</span>
+                <input type="text" placeholder="Search Locality, Project" ng-model="searchText">
+            </label>
+        </ion-subheader-bar>
+        <ion-list>
+            <ion-item  class="item-icon-left"  ng-repeat="item in newList | filter:searchText" ng-click="gotoSignup(item)">
+                <i class="icon " ng-class="item.type == 'residential' ? 'ion-home' : 'ion-ios-location' "></i>
+                <h2>{{item.name}}</h2>
+                <p>{{item.type}}</p>
+            </ion-item>
+            <!-- <ion-item  class="item-icon-left">
+                <i class="icon ion-ios-location"></i>
+                <h2>Gurgaon</h2>
+                <p>Locality</p>
+            </ion-item> -->
+        </ion-list>
+    </ion-content>
+</ion-view>

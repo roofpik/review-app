@@ -1,0 +1,113 @@
+
+
+<ion-view view-title="Register">
+<style>
+
+
+#backbutton {
+   height: 35px;
+   margin-top: -50px;
+   width: 60px;
+   border-top-right-radius: 6em;
+   border-bottom-right-radius: 6em;
+   margin-left: -2px;
+   background-color: #1DAED0;
+   position: fixed;
+}
+
+
+#detailsform
+{
+   margin-top: 15%;
+   margin-left:7%;
+   margin-right:7%;
+
+}
+
+#bluebgcolor
+{
+   background-color:#1DAED0;
+   margin-top:35px;
+   color:#fff;
+}
+
+.signup-roofpik{
+   margin-left: 10px !important;
+   padding-right: 5px !important;
+}
+
+#askforaccount {
+   font-size: 0.9em;
+   margin-top: 20px;
+   text-align: center;
+}
+
+#detailsform .item-input:before{
+   width:20px;
+}
+
+#detailsform textarea {
+  height:auto;
+  max-width:600px;
+
+
+  width:100%;
+
+
+  line-height:1.5em;
+  border:none;
+ 
+  padding:10px 10px;
+  -webkit-transition: height 2s ease;
+-moz-transition: height 2s ease;
+-ms-transition: height 2s ease;
+-o-transition: height 2s ease;
+transition: height 2s ease;
+ resize: none;
+}
+
+#detailsform .item-input{
+    border-bottom: 1px #ccc solid;
+}
+
+#detailsform .list-inset{
+   border:0px !important;
+}
+
+</style>
+    <ion-content class="has-header">
+
+ <form name="signupForm" novalidate>
+ <div id="detailsform">
+            <center>
+               <img src="img/roofpik.png" width=40 height=60>
+               <h3>Roofpik</h3>
+            </center>
+            <div>
+               <center>
+                  <h5> Register with us</h5>
+               </center>
+            </div>
+            <div class="list list-inset " >
+               <label class="item item-input ion-ios-person-outline">
+                  <input class="signup-roofpik" type="text" placeholder="Enter Your Name" ng-model="user.name">
+               </label>
+               <label class="item item-input ion-ios-email-outline">
+                  <input class="signup-roofpik" type="text" placeholder="Email Address" ng-model="user.email">
+               </label>
+               <label class="item item-input ion-iphone">
+                  <input class="signup-roofpik" type="number" placeholder="Mobile number" ng-model="user.mobileNum">
+               </label>
+               <label class="item item-input ion-home">
+               <textarea ng-keyup="autoExpand($event)" id="TextArea" placeholder="Complete Address" ng-model="user.address"> </textarea>
+                
+               </label>
+            </div>
+            <button class="button button-block" id="bluebgcolor" ng-click="signup()">Register</button>
+         </div>
+        
+
+</form>
+
+    </ion-content>
+</ion-view>
