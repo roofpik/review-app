@@ -91,6 +91,26 @@ app.config(function ($stateProvider, $urlRouterProvider) {
     })
     ;
 
+   // State For Reviews
+
+    $stateProvider.state("residential-review", {
+        url:'/residential-review/:projectName/:id',
+        templateUrl: 'templates/reviews/residential-review.html',
+        controller: 'residentialReviewCtrl'
+    })
+
+    $stateProvider.state("under-construction-review", {
+        url:'/under-construction-review/:projectName/:id',
+        templateUrl: 'templates/reviews/under-construction-review.html',
+        controller: 'underConstructionReviewCtrl'
+    })
+
+    $stateProvider.state("locality-review", {
+        url:'/locality-review/:localityName/:id',
+        templateUrl: 'templates/reviews/locality-review.html',
+        controller: 'localityReviewCtrl'
+    })
+
     // if none of the above states are matched, use this as the fallback
     $urlRouterProvider.otherwise('/app/start');
 });

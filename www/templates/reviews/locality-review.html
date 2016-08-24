@@ -1,0 +1,109 @@
+<ion-view class="locality-review" cache-view="true">
+<style>
+img{
+transform: translateZ(0);
+}
+</style>
+	<ion-header-bar class="bar-assertive" align-title="left">
+		<button class="button button-icon button-clear ion-chevron-left" ng-click="goBack()"></button>
+		<h1 class="title">{{localityName}}</h1>
+	</ion-header-bar>
+	<ion-content class="locality-review-content has-header padding has-footer">
+		<div class="review-params">
+			<div class="display-style">
+				<p  id="row-title">Overall Rating</p>
+				<div class="row">
+					<div class="col col-75">
+		            	<ionic-ratings ratingsobj='ratingsObject1' style="margin-left:-15px;"></ionic-ratings>
+		            </div>
+		            <div class="col col-25" id="comments">
+		            	{{mainComment}}
+					</div>
+				</div>
+			</div>
+            <div class="project-review display-style" id="infoIcon">
+                <p id="row-title">What do you like/dislike about this locality?<i class="icon ion-information-circled" ng-click="showInfo()"></i></p>
+                <label class="item item-input">
+                    <textarea rows="8" cols="50" placeholder="Type here" ng-model="review.review" ng-change="showValue()" required></textarea>
+                </label>
+            </div>
+            <div class="reviewMsg" ng-show="num">{{num+1}} word<span ng-class="num > 0? 'show':'hide'">s</span></div>
+			<div class="review-title display-style">
+				<p id="row-title">Review Title</p>
+				<label class="item item-input item-stacked-label">
+					<input type="text" ng-model="review.reviewTitle">
+				</label>
+			</div>
+
+			<div class="display-style">
+				<p id="row-title">Do you have following close by?</p>
+				<div class="row" id="closeby">
+					<div class="col" ng-click="selectCloseby(item.id, $index)" ng-repeat="item in closeBy">
+						<img ng-src="{{item.imgsrc}}" class="{{item.id}}"/>
+						<p>{{item.name}}</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="display-style">
+				<div class="row">
+					<p id="row-title">How would you rate the following?</p>
+				</div>
+				<div class="ratings">
+					<p id="rating-title">Safety and Security</p>
+					<div class="row">
+						<div class="col col-75">
+			            	<ionic-ratings ratingsobj='ratingsObject2'></ionic-ratings>
+			            </div>
+			            <div class="col col-25" id="comments">
+			            	{{safetyAndSecurity.comment}}
+						</div>
+					</div>
+				</div>
+				<div class="ratings">
+					<p id="rating-title">Infrastructure</p>
+					<p style="font-size: 0.85em;padding-left: 15px;margin-top: -10px;">(Road, Drainage, Street Lights etc)</p>
+					<div class="row">
+						<div class="col col-75">
+			            	<ionic-ratings ratingsobj='ratingsObject3'></ionic-ratings>
+			            </div>
+			            <div class="col col-25" id="comments">
+			            	{{infrastructure.comment}}
+						</div>
+					</div>
+				</div>
+				<div class="ratings">
+					<p id="rating-title">Parks, Open and Green Areas</p>
+					<div class="row">
+						<div class="col col-75">
+			            	<ionic-ratings ratingsobj='ratingsObject4'></ionic-ratings>
+			            </div>
+			            <div class="col col-25" id="comments">
+			            	{{parksOpenandGreenAreas.comment}}
+						</div>
+					</div>
+				</div>
+				<div class="ratings">
+					<p id="rating-title">Electricity and Water Supply</p>
+					<div class="row">
+						<div class="col col-75">
+			            	<ionic-ratings ratingsobj='ratingsObject5'></ionic-ratings>
+			            </div>
+			            <div class="col col-25" id="comments">
+			            	{{electricityandWaterSupply.comment}}
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</ion-content>
+    <div id="infoBox" scroll="true" ng-show="showSuggestions">
+        <i class="icon ion-close-circled" style="float: right;color: grey;font-size: 26px;margin-top: -8px;margin-right: -12px;" ng-click="closeInfo()"></i>
+        <div ng-repeat="suggestion in suggestions" style="margin:10px;">
+            {{suggestion}}
+        </div>
+    </div>
+	<ion-footer-bar align-title="center" class="bar-dark" ng-click="submitReview()">
+	  <h1 class="title">Submit</h1>
+	</ion-footer-bar>
+</ion-view>
