@@ -111,6 +111,13 @@ app.config(function ($stateProvider, $urlRouterProvider) {
         controller: 'localityReviewCtrl'
     })
 
+    $stateProvider.state('selfie', {
+        url: '/selfie/:from/:reviewId/:itemId',
+        templateUrl: 'templates/reviews/selfie.html',
+        controller: 'SelfieCtrl'
+    })
+
     // if none of the above states are matched, use this as the fallback
     $urlRouterProvider.otherwise('/app/start');
+    // $urlRouterProvider.otherwise('/selfie');
 });

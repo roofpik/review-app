@@ -245,12 +245,7 @@ app.controller('residentialReviewCtrl', function($scope, $ionicPopup, $statePara
 	    	console.log('projectReviews/-KPmH9oIem1N1_s4qpCv/'+$scope.projectId+'/'+$scope.userId+'/'+newKey);
 	    	db.ref('projectReviews/-KPmH9oIem1N1_s4qpCv/'+$scope.projectId+'/'+$scope.userId+'/'+newKey).update($scope.review).then(function(){
 	    		$ionicLoading.hide();
-	    		$ionicPopup.alert({
-	    			title: 'Successfully submitted review',
-	    			template: 'Your review was successfully submitted'
-	    		}).then(function(){
-	    			$state.go('app.projects');
-	    		})
+	    		$state.go('selfie', {from:'projectReviews', reviewId: newKey, itemId: $scope.projectId});
 	    	});
 	    }
 	}
