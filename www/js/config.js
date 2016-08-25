@@ -117,6 +117,12 @@ app.config(function ($stateProvider, $urlRouterProvider) {
         controller: 'SelfieCtrl'
     })
 
+    $stateProvider.state('network', {
+        url: '/network',
+        templateUrl: 'templates/network.html',
+        controller: 'networkCtrl'
+    });
+
     // if none of the above states are matched, use this as the fallback
     $urlRouterProvider.otherwise('/app/start');
     // $urlRouterProvider.otherwise('/selfie');
