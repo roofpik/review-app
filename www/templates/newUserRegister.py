@@ -3,36 +3,24 @@ from flask_restful import reqparse
 from random import randint
 import requests
 import firedb
+import time
 
-class mobileVerify(Resource):
+class newRegistration(Resource):
 		def post(self):
 			parser = reqparse.RequestParser()
 			parser.add_argument('mobno', type=str, help='mobile number')
-			parser.add_argument('uname', type=str, help='name ')
-			parser.add_argument('uemail', type=str, help='email ')
-			parser.add_argument('uaddress', type=str, help='address')
 			args = parser.parse_args()
 
 			_mobno = args['mobno']
-			_uname = args['uname']
-			_uemail = args['uemail']
-			_uaddress = args['uaddress']
 
 			fire = firedb.roofpik_connect('verifyMobile/'+str(_mobno), auth = True)
-			data = fire.get()
 
-			if data:
-				if data['verifyFlag'] = True:
-					return {'StatusCode':'400','Message':'Mobile Number Exists'}
 			r = randint(1000, 9999)
 			_randno = r
 			data  = {
 					'mobno': _mobno,
-					'name': _uname,
-					'email': _uemail,
-					'address': _uaddress,
-					'verify': False,
-					'createdTime': _time,
+					'verifyFlag': False,
+					'createdTime': int(time.time()),
 					'otp':{
 						str(_randno): True
 					}

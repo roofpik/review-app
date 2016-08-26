@@ -20,3 +20,18 @@ app.run(function ($ionicPlatform) {
         }
     });
 })
+
+
+
+function checkLocalStorage(item){
+
+   if (localStorage.getItem(item) === null ||  typeof window.localStorage[item] === 'undefined') {
+
+      return false
+
+    }
+    else{
+      return true
+    }
+
+}

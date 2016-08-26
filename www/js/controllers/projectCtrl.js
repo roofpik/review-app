@@ -1,8 +1,11 @@
-app.controller('projectCtrl', function($scope, $timeout, $ionicLoading) {
+app.controller('projectCtrl', function($scope, $timeout, $ionicLoading, $ionicHistory) {
     $ionicLoading.show();
     $scope.list = [];
     var loc = {};
     var snapshot;
+    $ionicHistory.clearHistory();
+    $ionicHistory.clearCache();
+
     db.ref('/locality/-KPmH9oIem1N1_s4qpCv/').once('value', function(snapshot) {
 
         for (var key in snapshot.val()) {

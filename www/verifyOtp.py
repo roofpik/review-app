@@ -21,7 +21,7 @@ class verifyOtp(Resource):
                 if otps:
                         for otp in otps:
                                 if otp == _otp:
-
-                                        return {'statusCode':'200', 'OTP': str(otp)}
-                        return {'statusCode':'400'}
+                                        return {'statusCode':'200', 'message': 'Thank you for verifying your mobile'}
+                        return {'statusCode':'400', 'message': 'Invalid code'}
+                return {'statusCode':'400', 'message': 'Invalid mobile number'}
 

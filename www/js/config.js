@@ -80,17 +80,31 @@ app.config(function ($stateProvider, $urlRouterProvider) {
         }
     })
 
-    .state('app.register', {
+    // .state('app.register', {
+    //     url: '/register',
+    //     views: {
+    //         'menuContent': {
+    //             templateUrl: 'templates/register.html',
+    //             controller: 'registerCtrl'
+    //         }
+    //     }
+    // })
+
+    .state('register', {
         url: '/register',
-        views: {
-            'menuContent': {
-                templateUrl: 'templates/register.html',
-                controller: 'registerCtrl'
-            }
-        }
+        abstract: false,
+        templateUrl: 'templates/register.html',
+        controller: 'registerCtrl'
+    })
+
+    .state('test', {
+        url: '/test',
+        abstract: false,
+        templateUrl: 'templates/test.html',
+        controller: 'testCtrl'
     })
     ;
 
     // if none of the above states are matched, use this as the fallback
-    $urlRouterProvider.otherwise('/app/start');
+    $urlRouterProvider.otherwise('/register');
 });

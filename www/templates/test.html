@@ -1,0 +1,23 @@
+<ion-view>
+    <input type='file' accept='text/plain' onchange='openFile(event)'>
+    <br>
+    <img id='output'>
+    <script>
+    var openFile = function(event) {
+        var input = event.target;
+
+        var reader = new FileReader();
+        reader.onload = function() {
+            var text = reader.result;
+            var data = text.split("$$");
+            console.log(data);
+            var lines = [];
+            for (var i = 0; i < data.length; i++) {
+                lines.push(data[i].split("@@"));
+            }
+            console.log(lines);
+        };
+        reader.readAsText(input.files[0]);
+    };
+    </script>
+</ion-view>
