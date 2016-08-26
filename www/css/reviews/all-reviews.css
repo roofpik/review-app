@@ -1,0 +1,292 @@
+/*Residential reviews*/
+.residential-review .residential-review-content {
+    background-color: #F5F7F7;
+}
+
+.residential-review .review-params {
+	background-color:#F5F7F7;
+} 
+
+.residential-review .resident, .residential-review .nonResident {
+  width:45px;
+}
+
+.residential-review .display-style {
+  width: 94%;
+  margin: 0 auto 15px auto;
+}
+
+.residential-review .review-title label {
+  padding:0px;
+  border: 1px solid #18AFD1;
+}
+
+.residential-review .review-title label input {
+  padding: 0 5px;
+}
+
+.residential-review .project-review label{
+    height: 120px;
+    border: 1px solid #18AFD1;
+    border-radius: 3px;
+    margin: 0 auto;
+    padding: 0px;
+}
+
+.residential-review .project-review textarea{
+    line-height: 21px;
+    margin-top: 60px;
+    margin-left: 1px;
+    padding: 5px;
+}
+
+.residential-review .ans{
+	border:1px solid #ccc;
+	text-align:center;
+}
+
+.residential-review .yesSelected{
+  border:1px solid #33CD5F;
+  background-color: #c1f0cf;
+  text-align:center;
+}
+.residential-review .noSelected{
+  border:1px solid #EF473A;
+  background-color:#fbd3d0;
+  text-align:center;
+}
+.residential-review .notSureSelected{
+    border: 1px solid #4dd2ff;
+    background-color: #ccf2ff;
+    text-align: center;
+}
+
+.residential-review .kids, .residential-review .pets, .residential-review .singles, .residential-review .elders, .residential-review .family{
+    width: 32px;
+    height: 48px;
+}
+
+.residential-review #row-title{
+  font-size:1.13em;
+  margin-left:2px;
+  color: #000;
+}
+
+.residential-review #rating-title{
+  margin-left:15px;
+}
+
+.residential-review #comments {
+  color:#000;
+}
+
+.residential-review #infoIcon i{
+    color: #18AFD1;
+    font-size: 20px;
+    margin-left: 10px;
+}
+
+
+/*Under Construction reviews*/
+.under-construction-review .under-construction-review-content {
+    background-color: #F5F7F7;
+}
+
+.under-construction-review .review-params {
+  background-color:#F5F7F7;
+} 
+
+.under-construction-review .owner, .under-construction-review .other {
+  width:45px;
+}
+
+.under-construction-review .display-style {
+  width: 94%;
+  margin: 0 auto 15px auto;
+}
+
+.under-construction-review .review-title label {
+  padding:0px;
+  border: 1px solid #18AFD1;
+}
+
+.under-construction-review .review-title label input {
+  padding: 0 5px;
+}
+
+.under-construction-review .project-review label{
+    height: 120px;
+    border: 1px solid #18AFD1;
+    border-radius: 3px;
+    margin: 0 auto;
+    padding: 0px;
+}
+
+.under-construction-review .project-review textarea{
+    line-height: 21px;
+    margin-top: 60px;
+    margin-left: 1px;
+    padding: 5px;
+}
+
+.under-construction-review .ans{
+  border:1px solid #ccc;
+  text-align:center;
+}
+
+.under-construction-review .yesSelected{
+  border:1px solid #33CD5F;
+  background-color: #c1f0cf;
+  text-align:center;
+}
+.under-construction-review .noSelected{
+  border:1px solid #EF473A;
+  background-color:#fbd3d0;
+  text-align:center;
+}
+.under-construction-review .notSureSelected{
+    border: 1px solid #4dd2ff;
+    background-color: #ccf2ff;
+    text-align: center;
+}
+
+.under-construction-review .kids, .under-construction-review .pets, .under-construction-review .singles, .under-construction-review .elders, .under-construction-review .family{
+    width: 32px;
+    height: 48px;
+}
+
+.under-construction-review #row-title{
+  font-size:1.13em;
+  margin-left:2px;
+  color: #000;
+}
+
+.under-construction-review #rating-title{
+  margin-left:15px;
+}
+
+.under-construction-review #comments {
+  color:#000;
+}
+
+.under-construction-review #infoIcon i{
+    color: #18AFD1;
+    font-size: 20px;
+    margin-left: 10px;
+}
+
+/*locality reviews*/
+.locality-review .locality-review-content {
+    background-color: #F5F7F7;
+}
+
+.locality-review .review-params {
+  background-color:#F5F7F7;
+} 
+.locality-review .display-style {
+  width: 94%;
+  margin: 0 auto 15px auto;
+}
+
+.locality-review .review-title label , .locality-review .customerInfo label {
+  padding:0px;
+  border: 1px solid #18AFD1;
+}
+
+.locality-review .review-title label input, .locality-review .customerInfo label input {
+  padding: 0 5px;
+}
+
+.locality-review .project-review label{
+    height: 120px;
+    border: 1px solid #18AFD1;
+    border-radius: 3px;
+    margin: 0 auto;
+    padding: 0px;
+}
+
+.locality-review .project-review textarea{
+    line-height: 21px;
+    margin-top: 60px;
+    margin-left: 1px;
+    padding: 5px;
+}
+
+.locality-review .ans{
+  border:1px solid #ccc;
+  text-align:center;
+}
+.locality-review #infoIcon i{
+    color: #18AFD1;
+    font-size: 20px;
+    margin-left: 10px;
+}
+
+.locality-review .yesSelected{
+  border:1px solid #33CD5F;
+  background-color:#c1f0cf;
+  text-align:center;
+}
+.locality-review .noSelected{
+  border:1px solid #EF473A;
+  background-color:#fbd3d0;
+  text-align:center;
+}
+.locality-review .notSureSelected{
+    border: 1px solid #4dd2ff;
+    background-color: #ccf2ff;
+    text-align: center;
+}
+
+.locality-review #row-title{
+  font-size:1.13em;
+  margin-left:2px;
+  color: #000;
+}
+
+.locality-review #rating-title{
+  margin-left:15px;
+}
+
+.locality-review #comments {
+  color:#000;
+}
+
+.locality-review #closeby .col{
+  text-align:center;
+}
+
+.locality-review .school{
+  width:50px;
+}
+
+.locality-review .market{
+  width:50px;
+}
+
+.locality-review .hospital{
+  width:50px;
+}
+
+#infoBox {
+    padding: 0px 12px;
+    border-radius: 15px;
+    background-color: #d1f2fa;
+    position: fixed;
+    width: 50%;
+    /* top: 50px; */
+    top: 10%;
+    right: 10px;
+    border: 1px solid #5ed1ed;
+}
+
+.reviewMsg {
+    color: #18AFD1;
+    margin-top: -10px;
+    float: right;
+    margin-right: 20px;
+}
+
+.reviewMsg .show{
+  display:inline;
+}

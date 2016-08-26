@@ -1,4 +1,6 @@
-app.controller('projectCtrl', function($scope, $timeout, $ionicLoading, $ionicHistory) {
+
+app.controller('projectCtrl', function($scope, $timeout, $ionicLoading, $ionicHistory, $state) {
+
     $ionicLoading.show();
     $scope.list = [];
     var loc = {};
@@ -13,7 +15,7 @@ app.controller('projectCtrl', function($scope, $timeout, $ionicLoading, $ionicHi
             loc = {};
             loc.name = snapshot.val()[key].locationName;
             loc.id = snapshot.val()[key].locationId;
-            loc.type = 'location';
+            loc.type = 'Locality';
             $scope.list.push(loc);
         };
 
@@ -24,9 +26,10 @@ app.controller('projectCtrl', function($scope, $timeout, $ionicLoading, $ionicHi
                 for (var key in projects.val()) {
 
                     loc = {};
+                    console.log(projects.val());
                     loc.name = projects.val()[key].projectName;
                     loc.id = projects.val()[key].projectId;
-                    loc.type = 'residential';
+                    loc.type = projects.val()[key].projectType;
                     $scope.list.push(loc);
                     $timeout(function() {
                         $scope.newList = angular.copy($scope.list);
@@ -42,11 +45,19 @@ app.controller('projectCtrl', function($scope, $timeout, $ionicLoading, $ionicHi
 
     });
 
-    $scope.gotoSignup = function(item) {
-        if (item.type == 'residential') {
-            window.localStorage['selectedProject'] = JSON.stringify(item);
-        } else {
+    $scope.goToReview = function(item) {
+        console.log(item);
+        if (item.type == 'Locality') {
             window.localStorage['selectedLocality'] = JSON.stringify(item);
+            $state.go('locality-review', {localityName: item.name, id: item.id});
+            window.localStorage['selectedLocality'] = JSON.stringify(item);
+        } else {
+            window.localStorage['selectedProject'] = JSON.stringify(item);
+            if(item.type="Ready To Move"){
+                $state.go('residential-review', {projectName: item.name, id: item.id});
+            } else if(item.type="Under Construction"){
+                $state.go('under-construction-review', {projectName: item.name, id: item.id});
+            }
         }
     }
 

@@ -105,6 +105,40 @@ app.config(function ($stateProvider, $urlRouterProvider) {
     })
     ;
 
+   // State For Reviews
+
+    $stateProvider.state("residential-review", {
+        url:'/residential-review/:projectName/:id',
+        templateUrl: 'templates/reviews/residential-review.html',
+        controller: 'residentialReviewCtrl'
+    })
+
+    $stateProvider.state("under-construction-review", {
+        url:'/under-construction-review/:projectName/:id',
+        templateUrl: 'templates/reviews/under-construction-review.html',
+        controller: 'underConstructionReviewCtrl'
+    })
+
+    $stateProvider.state("locality-review", {
+        url:'/locality-review/:localityName/:id',
+        templateUrl: 'templates/reviews/locality-review.html',
+        controller: 'localityReviewCtrl'
+    })
+
+    $stateProvider.state('selfie', {
+        url: '/selfie/:from/:reviewId/:itemId',
+        templateUrl: 'templates/reviews/selfie.html',
+        controller: 'SelfieCtrl'
+    })
+
+    $stateProvider.state('network', {
+        url: '/network',
+        templateUrl: 'templates/network.html',
+        controller: 'networkCtrl'
+    });
+
     // if none of the above states are matched, use this as the fallback
+
     $urlRouterProvider.otherwise('/register');
+
 });
