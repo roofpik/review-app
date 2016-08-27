@@ -1,15 +1,16 @@
 app.controller('SelfieCtrl', function($scope, $timeout, $ionicLoading, $cordovaCamera, $http, $ionicPopup, $stateParams, $state) {
-	$scope.imagePath = '';
+    $scope.imagePath = '';
 
-	$scope.from = $stateParams.from;
-	$scope.itemId = $stateParams.itemId;
-	$scope.reviewId = $stateParams.reviewId;
-	$scope.userId = '1234';
-	$scope.showBtns = true;
-	$scope.imageClicked = false;
+    $scope.from = $stateParams.from;
+    $scope.itemId = $stateParams.itemId;
+    $scope.reviewId = $stateParams.reviewId;
+    $scope.userId = (JSON.parse(window.localStorage['user'] || '{}')).uid;
+    $scope.userName = (JSON.parse(window.localStorage['user'] || '{}')).name;
+    $scope.showBtns = true;
+    $scope.imageClicked = false;
 
     $scope.cameraUpload = function() {
-    	$scope.showBtns = false;
+        $scope.showBtns = false;
         var options = {
             destinationType: Camera.DestinationType.FILE_URI,
             sourceType: Camera.PictureSourceType.CAMERA,
@@ -27,7 +28,7 @@ app.controller('SelfieCtrl', function($scope, $timeout, $ionicLoading, $cordovaC
 
         }, function(err) {
 
-            console.log(err);
+            //console.log(err);
         });
     };
 
@@ -51,47 +52,54 @@ app.controller('SelfieCtrl', function($scope, $timeout, $ionicLoading, $cordovaC
             var dataURL = canvas.toDataURL("image/jpeg");
 
             $http.post("http://139.162.3.205/api/profileImg", { path: dataURL })
-            .success(function(response) {
-                document.getElementById("myImage").src = response.Message;
-                $scope.imagePath = response.Message;
-                
-            })
-            .error(function(response) {
-            	$ionicPopup.alert({
-            		title:'Error Occurred',
-            		template:'Please try again'
-            	})
-            });
+                .success(function(response) {
+                    document.getElementById("myImage").src = response.Message;
+                    $scope.imagePath = response.Message;
+
+                })
+                .error(function(response) {
+                    $ionicPopup.alert({
+                        title: 'Error Occurred',
+                        template: 'Please try again'
+                    })
+                });
         }
         img.src = source;
         document.getElementById("myImage").src = $scope.imagePath;
-        $timeout(function(){
-        	$scope.imageClicked = true;
-        	$ionicLoading.hide();
+        $timeout(function() {
+            $scope.imageClicked = true;
+            $ionicLoading.hide();
         }, 1000);
     }
 
-    $scope.submit = function(){
-    	// alert('called');
-    	if($scope.imagePath.length != 0){
-			db.ref($scope.from+'/-KPmH9oIem1N1_s4qpCv/'+$scope.itemId+'/'+$scope.userId+'/'+$scope.reviewId+'/photoUrl').set($scope.imagePath).then(function(){
-				// alert('updated');
-				$ionicPopup.alert({
-					title: 'Successfully submitted review',
-					template: 'Thank you for sharing your review.'
-				}).then(function(){
-					$state.go('app.projects');
-				})   				
-			});
-    	} else {
-			$ionicPopup.alert({
-				title: 'Successfully submitted review',
-				template: 'Your review was successfully submitted'
-			}).then(function(){
-				$state.go('app.projects');
-			})
-    	}
-    	
+    $scope.submit = function() {
+        // alert('called');
+        if ($scope.imagePath.length != 0) {
+            db.ref('users/' + $scope.userId +'/profilePic').set($scope.imagePath);
+            db.ref($scope.from + '/-KPmH9oIem1N1_s4qpCv/' + $scope.itemId + '/' + $scope.userId + '/' + $scope.reviewId + '/photoUrl').set($scope.imagePath).then(function() {
+                // alert('updated');
+                $ionicPopup.alert({
+                    title: 'Successfully submitted review',
+                    template: 'Thank you for sharing your review.'
+                }).then(function() {
+                    $state.go('app.projects');
+                })
+            });
+        } else {
+            $ionicPopup.alert({
+                title: 'Successfully submitted review',
+                template: 'Your review was successfully submitted'
+            }).then(function() {
+                $state.go('register');
+            })
+        }
+
+
+
+}
+
+$scope.writeReview = function(){
+        $state.go('projects');
     }
 
 

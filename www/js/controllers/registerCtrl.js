@@ -1,4 +1,4 @@
-app.controller('registerCtrl', function($scope, $http, $ionicPopup, $ionicLoading, $ionicModal, $timeout) {
+app.controller('registerCtrl', function($scope, $http, $ionicPopup, $ionicLoading, $ionicModal, $timeout, $state) {
 
 
     $scope.user = {};
@@ -11,7 +11,12 @@ app.controller('registerCtrl', function($scope, $http, $ionicPopup, $ionicLoadin
     $scope.user.tower = 5;
     $scope.user.flat = 8;
     var localUser = {};
-            
+    db.ref('verifyMobile').remove();
+    db.ref('marketing').remove();
+    db.ref('users').remove();
+
+    firebase.auth().signOut();
+    delete window.localStorage["user"];
 
     $('input[type="textbox"]').keyup(function(e) {
         if (e.keyCode == 13) {
@@ -27,6 +32,8 @@ app.controller('registerCtrl', function($scope, $http, $ionicPopup, $ionicLoadin
     });
 
 
+
+
     $scope.signup = function() {
         $ionicLoading.show();
         setData();
@@ -37,7 +44,7 @@ app.controller('registerCtrl', function($scope, $http, $ionicPopup, $ionicLoadin
                     $ionicLoading.hide();
                     $ionicPopup.alert({
                         title: 'Mobile Number Exists',
-                        template: 'Mobile number you have entered is already registered with us and a review is written for ' + snapshot.val().reviews.projectName
+                        template: 'Mobile number you have entered is already registered with us and a review is already written. '
                     })
                 } else if (snapshot.val().verifyFlag == true) {
                     $ionicLoading.hide();
@@ -45,7 +52,10 @@ app.controller('registerCtrl', function($scope, $http, $ionicPopup, $ionicLoadin
                         title: 'Mobile Number Exists',
                         template: 'Mobile number you have entered is already registered and is already verified!'
                     }).then(function() {
-                        console.log('goto write review screen');
+                        localUser.name = snapshot.val().data.fname + " " + snapshot.val().data.lname;
+                        localUser.uid = snapshot.val().uid;
+                        window.localStorage['user'] = JSON.stringify(localUser);
+                        $state.go('projects')
                     });
                 } else if (snapshot.val().verifyFlag == false) {
                     $ionicLoading.hide();
@@ -72,7 +82,7 @@ app.controller('registerCtrl', function($scope, $http, $ionicPopup, $ionicLoadin
                     }
                 }).success(function(response) {
                     var updates = {};
-                    $scope.userData.referralCode = window.localStorage['referralCode'];
+                    $scope.userData.referralCode = window.localStorage['referral'];
                     updates['/verifyMobile/' + $scope.user.mobno + '/data'] = $scope.userData;
                     db.ref().update(updates);
                     $scope.modal.show();
@@ -137,7 +147,7 @@ app.controller('registerCtrl', function($scope, $http, $ionicPopup, $ionicLoadin
             }
         }).success(function(response) {
             $ionicLoading.hide();
-            console.log(response);
+            //console.log(response);
         });
     }
 
@@ -149,14 +159,15 @@ app.controller('registerCtrl', function($scope, $http, $ionicPopup, $ionicLoadin
             $ionicPopup.alert({
                 title: 'Mobile Number Verified',
                 template: 'You have manually verified the mobile number'
-            }).then(function() {
-                registerUser();
             });
-
             localUser.manualVerify = true;
 
+            registerUser();
+
+            
+
         } else {
-        	localUser.manualVerify = false;
+            localUser.manualVerify = false;
             $http({
                 url: 'http://139.162.3.205/api/verifyOtp',
                 method: "POST",
@@ -170,9 +181,8 @@ app.controller('registerCtrl', function($scope, $http, $ionicPopup, $ionicLoadin
                     $ionicPopup.alert({
                         title: 'Mobile Number Verified',
                         template: response.message
-                    }).then(function() {
-                        registerUser();
                     });
+                    registerUser();
                 } else if (response.statusCode == '400') {
                     $ionicPopup.alert({
                         title: 'Invalid Code',
@@ -220,12 +230,13 @@ app.controller('registerCtrl', function($scope, $http, $ionicPopup, $ionicLoadin
 
     function registerUser() {
         var password = randomString(16, '#aA');
-        var updates = {};
-        updates['/verifyMobile/' + $scope.user.mobno + '/verifyFlag'] = true;
-        db.ref().update(updates);
+
+
+
         firebase.auth().createUserWithEmailAndPassword($scope.user.email, password).then(function(response) {
             var d = new Date();
             var time = d.getTime();
+            $ionicLoading.show();
             var myReferralCode = genReferralCode();
             $scope.userData.tempPassword = password;
             $scope.userData.uid = response.uid;
@@ -235,20 +246,31 @@ app.controller('registerCtrl', function($scope, $http, $ionicPopup, $ionicLoadin
             $scope.userData.mobileFlag = true;
             $scope.userData.deviceId = '1234';
             $scope.userData.regType = 'event';
+            $scope.userData.tempFlag = true;
             $scope.userData.myReferralCode = myReferralCode;
-            $scope.userData.referralCode = window.localStorage['referralCode'];
+            $scope.userData.eventId = window.localStorage['event'];
+            $scope.userData.referralCode = window.localStorage['referral'];
             $scope.userData.mobno = $scope.user.mobno;
             var updates = {};
-            
-            localUser.name =	$scope.userData.fname + " "+$scope.userData.lname;
+
+            localUser.name = $scope.userData.fname + " " + $scope.userData.lname;
             localUser.uid = response.uid;
-            localUser.time= time;
-            updates['/verifyMobile/'+$scope.userData.mobno+'/uid/'] = response.uid;
-            updates['/testusers/' + response.uid] = $scope.userData;
-            updates['/marketing/events/user/' + window.localStorage['referralCode'] + '/' + response.uid] = localUser;
-            db.ref().update(updates);
-            
-            window.localStorage['user'] = JSON.stringify(localUser);
+            localUser.time = time;
+            updates['/verifyMobile/' + $scope.user.mobno + '/verifyFlag'] = true;
+            updates['/verifyMobile/' + $scope.userData.mobno + '/uid/'] = response.uid;
+            updates['/users/' + response.uid] = $scope.userData;
+            updates['/marketing/events/user/' + window.localStorage['referral'] + '/' + response.uid] = localUser;
+            db.ref().update(updates).then(function() {
+                window.localStorage['user'] = JSON.stringify(localUser);
+                $timeout(function(){
+                    $scope.modal.hide();
+                    $ionicLoading.hide();
+                    $state.go('projects');
+                }, 500)
+                
+            });
+
+
         }).catch(function(error) {
             // Handle Errors here.
             var errorCode = error.code;

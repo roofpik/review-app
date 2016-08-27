@@ -1,4 +1,7 @@
-<ion-view view-title="Select Project">
+<ion-view view-title="Select Project" cache-view="true">
+    <ion-header-bar align-title="center" class="bar-dark">
+        <h1 class="title">Select Project/Locality</h1>
+    </ion-header-bar>
     <ion-content class="has-header">
         <ion-subheader-bar>
             <label class="item item-input item-floating-label">
@@ -7,7 +10,7 @@
             </label>
         </ion-subheader-bar>
         <ion-list>
-            <ion-item  class="item-icon-left"  ng-repeat="item in newList | filter:searchText" ng-click="goToReview(item)">
+            <ion-item class="item-icon-left" ng-repeat="item in newList | filter:searchText" ng-click="goToReview(item)">
                 <i class="icon " ng-class="item.type == 'residential' ? 'ion-home' : 'ion-ios-location' "></i>
                 <h2>{{item.name}}</h2>
                 <p>{{item.type}}</p>

@@ -1,8 +1,7 @@
-
-app.config(function ($stateProvider, $urlRouterProvider) {
+app.config(function($stateProvider, $urlRouterProvider) {
     $stateProvider
 
-    .state('app', {
+        .state('app', {
         url: '/app',
         abstract: true,
         templateUrl: 'templates/menu.html',
@@ -60,25 +59,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
     })
 
 
-    .state('app.start', {
-        url: '/start',
-        views: {
-            'menuContent': {
-                templateUrl: 'templates/start.html',
-                controller: 'appStartCtrl'
-            }
-        }
-    })
-
-    .state('app.projects', {
-        url: '/projects',
-        views: {
-            'menuContent': {
-                templateUrl: 'templates/projects.html',
-                controller: 'projectCtrl'
-            }
-        }
-    })
+ 
 
     // .state('app.register', {
     //     url: '/register',
@@ -102,25 +83,24 @@ app.config(function ($stateProvider, $urlRouterProvider) {
         abstract: false,
         templateUrl: 'templates/test.html',
         controller: 'testCtrl'
-    })
-    ;
+    });
 
-   // State For Reviews
+    // State For Reviews
 
     $stateProvider.state("residential-review", {
-        url:'/residential-review/:projectName/:id',
+        url: '/residential-review/:projectName/:id',
         templateUrl: 'templates/reviews/residential-review.html',
         controller: 'residentialReviewCtrl'
     })
 
     $stateProvider.state("under-construction-review", {
-        url:'/under-construction-review/:projectName/:id',
+        url: '/under-construction-review/:projectName/:id',
         templateUrl: 'templates/reviews/under-construction-review.html',
         controller: 'underConstructionReviewCtrl'
     })
 
     $stateProvider.state("locality-review", {
-        url:'/locality-review/:localityName/:id',
+        url: '/locality-review/:localityName/:id',
         templateUrl: 'templates/reviews/locality-review.html',
         controller: 'localityReviewCtrl'
     })
@@ -137,8 +117,28 @@ app.config(function ($stateProvider, $urlRouterProvider) {
         controller: 'networkCtrl'
     });
 
+
+
+    $stateProvider.state('start', {
+        url: '/start',
+        templateUrl: 'templates/start.html',
+        controller: 'appStartCtrl'
+    });
+
+
+    $stateProvider.state('projects', {
+        url: '/projects',
+        templateUrl: 'templates/projects.html',
+        controller: 'projectCtrl'
+
+
+    })
+
+
+
+
     // if none of the above states are matched, use this as the fallback
 
-    $urlRouterProvider.otherwise('/register');
+    $urlRouterProvider.otherwise('/start');
 
 });

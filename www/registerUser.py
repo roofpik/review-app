@@ -73,7 +73,7 @@ class registerUser(Resource):
 
                 # return data
               
-                fire_users  = firedb.roofpik_connect('testusers/data/'+_uid, auth = True)
+                fire_users  = firedb.roofpik_connect('users/data/'+_uid, auth = True)
                 fire_users.put(data)
 
 #                userData = {}

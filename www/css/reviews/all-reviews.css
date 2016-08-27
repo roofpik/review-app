@@ -1,4 +1,8 @@
 /*Residential reviews*/
+
+body, .ionic-body{
+  font-size: 12px !important;
+}
 .residential-review .residential-review-content {
     background-color: #F5F7F7;
 }
@@ -63,17 +67,21 @@
 
 .residential-review .kids, .residential-review .pets, .residential-review .singles, .residential-review .elders, .residential-review .family{
     width: 32px;
-    height: 48px;
+    height: 38px;
+    margin-top:10px;
 }
 
 .residential-review #row-title{
-  font-size:1.13em;
+  font-size:1.0em;
   margin-left:2px;
   color: #000;
+  margin-bottom:10px;
 }
 
 .residential-review #rating-title{
   margin-left:15px;
+  margin-bottom: 5px;
+
 }
 
 .residential-review #comments {
@@ -239,13 +247,15 @@
 }
 
 .locality-review #row-title{
-  font-size:1.13em;
+  font-size:1.0em;
   margin-left:2px;
   color: #000;
+  margin-bottom: 0px;
 }
 
 .locality-review #rating-title{
   margin-left:15px;
+  margin-bottom:5px;
 }
 
 .locality-review #comments {
