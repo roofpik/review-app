@@ -32,8 +32,6 @@ app.controller('registerCtrl', function($scope, $http, $ionicPopup, $ionicLoadin
     });
 
 
-
-
     $scope.signup = function() {
         $ionicLoading.show();
         setData();
@@ -44,7 +42,7 @@ app.controller('registerCtrl', function($scope, $http, $ionicPopup, $ionicLoadin
                     $ionicLoading.hide();
                     $ionicPopup.alert({
                         title: 'Mobile Number Exists',
-                        template: 'Mobile number you have entered is already registered with us and a review is already written. '
+                        template: 'Mobile number you have entered is already registered with us and a review is already written.'
                     })
                 } else if (snapshot.val().verifyFlag == true) {
                     $ionicLoading.hide();
@@ -55,7 +53,7 @@ app.controller('registerCtrl', function($scope, $http, $ionicPopup, $ionicLoadin
                         localUser.name = snapshot.val().data.fname + " " + snapshot.val().data.lname;
                         localUser.uid = snapshot.val().uid;
                         window.localStorage['user'] = JSON.stringify(localUser);
-                        $state.go('projects')
+                        $state.go('projects');
                     });
                 } else if (snapshot.val().verifyFlag == false) {
                     $ionicLoading.hide();
