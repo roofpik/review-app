@@ -1,4 +1,4 @@
-app.controller('SelfieCtrl', function($scope, $timeout, $ionicLoading, $cordovaCamera, $http, $ionicPopup, $stateParams, $state) {
+app.controller('SelfieCtrl', function($scope, $timeout, $ionicLoading, $cordovaCamera, $http, $ionicPopup, $stateParams, $state, $ionicHistory) {
     $scope.imagePath = '';
 
     $scope.from = $stateParams.from;
@@ -8,6 +8,7 @@ app.controller('SelfieCtrl', function($scope, $timeout, $ionicLoading, $cordovaC
     $scope.userName = (JSON.parse(window.localStorage['user'] || '{}')).name;
     $scope.showBtns = true;
     $scope.imageClicked = false;
+    $ionicHistory.clearHistory();
 
     $scope.cameraUpload = function() {
         $scope.showBtns = false;
@@ -69,7 +70,7 @@ app.controller('SelfieCtrl', function($scope, $timeout, $ionicLoading, $cordovaC
         $timeout(function() {
             $scope.imageClicked = true;
             $ionicLoading.hide();
-        }, 1000);
+        }, 10000);
     }
 
     $scope.submit = function() {
@@ -82,7 +83,7 @@ app.controller('SelfieCtrl', function($scope, $timeout, $ionicLoading, $cordovaC
                     title: 'Successfully submitted review',
                     template: 'Thank you for sharing your review.'
                 }).then(function() {
-                    $state.go('app.projects');
+                    $state.go('register');
                 })
             });
         } else {

@@ -1,0 +1,16 @@
+<ion-view>
+    <ion-content>
+        <form name="signupForm" novalidate ng-submit="signupForm.$valid && checkMobile()">
+            <center>
+                <h4>Check Registered Mobile Number</h4>
+            </center>
+            <div class="list list-inset ">
+                <label class="item item-input ufname">
+                    <input class="signup-roofpik" type="number" placeholder="Mobile number" ng-model="user.mobno" required ng-minlength="10" ng-maxlength="10">
+                </label>
+            </div>
+            <input type="submit" ng-disabled="signupForm.$invalid" class="button button-block button-dark" value="Next">
+        </form>
+         <input type="button"  class="button button-block button-dark" value="cancel" ng-click="cancel()">
+    </ion-content>
+</ion-view>

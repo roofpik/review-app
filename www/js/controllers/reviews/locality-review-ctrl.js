@@ -1,14 +1,14 @@
-app.controller('localityReviewCtrl', function($scope, $ionicPopup, $stateParams, $state, $ionicLoading, $ionicHistory) {
+app.controller('localityReviewCtrl', function($scope, $ionicPopup, $stateParams, $state, $ionicLoading) {
 
     $scope.localityName = $stateParams.localityName;
     $scope.projectId = $stateParams.id;
     // $scope.userId = window.localStorage.getItem("userUid");
     $scope.userId = (JSON.parse(window.localStorage['user'] || '{}')).uid;
     $scope.userName = (JSON.parse(window.localStorage['user'] || '{}')).name;
+    
 
     // $scope.localityName = "Sohna Road";
-    $ionicHistory.clearHistory();
-    $ionicHistory.clearCache();
+    
 
     $scope.hospitalY = false;
     $scope.marketY = false;
@@ -213,7 +213,7 @@ app.controller('localityReviewCtrl', function($scope, $ionicPopup, $stateParams,
     }
 
     $scope.goBack = function() {
-        $state.go('register');
+        $state.go('projects');
     }
 
 });

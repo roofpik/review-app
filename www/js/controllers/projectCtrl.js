@@ -5,7 +5,6 @@ app.controller('projectCtrl', function($scope, $timeout, $ionicLoading, $ionicHi
     var loc = {};
     var snapshot;
     $ionicHistory.clearHistory();
-    $ionicHistory.clearCache();
 
     db.ref('/locality/-KPmH9oIem1N1_s4qpCv/').once('value', function(snapshot) {
 
@@ -32,8 +31,15 @@ app.controller('projectCtrl', function($scope, $timeout, $ionicLoading, $ionicHi
                     $scope.list.push(loc);
                     $timeout(function() {
                         $scope.newList = angular.copy($scope.list);
-                        $ionicLoading.hide();
+                        
                     }, 500);
+
+                     $timeout(function() {
+                        $ionicLoading.hide();
+                        
+                    }, 8000);
+
+                    
                 };
 
             });

@@ -134,6 +134,22 @@ app.config(function($stateProvider, $urlRouterProvider) {
 
     })
 
+      $stateProvider.state('checkMobile', {
+        url: '/checkMobile',
+        templateUrl: 'templates/checkMobile.html',
+        controller: 'checkMobileCtrl'
+
+
+    })
+
+
+     $stateProvider.state('verifyMobile', {
+        url: '/verifyMobile/:verifyId/:mobno',
+        templateUrl: 'templates/verifyMobile.html',
+        controller: 'verifyMobileCtrl'
+
+
+    })
 
 
 

@@ -13,31 +13,30 @@
     <link href="css/ionic.app.css" rel="stylesheet">
     -->
     <!-- ionic/angularjs js -->
-
-     <script src="https://www.gstatic.com/firebasejs/3.3.0/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/3.3.0/firebase.js"></script>
     <script>
     // Initialize Firebase
 
-  //     var config = {
-  //   apiKey: "AIzaSyD_4bPp5HKryXDzaQwfRhqAU5SsSAdDIJ0",
-  //   authDomain: "roofpik-948d0.firebaseapp.com",
-  //   databaseURL: "https://roofpik-948d0.firebaseio.com",
-  //   storageBucket: "roofpik-948d0.appspot.com",
-  // };
     var config = {
-        apiKey: "AIzaSyAek6CbWUct6QjJwoun0QKW8lvNxoB1hbQ",
-        authDomain: "roofpik-26701.firebaseapp.com",
-        databaseURL: "https://roofpik-26701.firebaseio.com",
-        storageBucket: "roofpik-26701.appspot.com",
+        apiKey: "AIzaSyD_4bPp5HKryXDzaQwfRhqAU5SsSAdDIJ0",
+        authDomain: "roofpik-948d0.firebaseapp.com",
+        databaseURL: "https://roofpik-948d0.firebaseio.com",
+        storageBucket: "roofpik-948d0.appspot.com",
     };
+    // var config = {
+    //     apiKey: "AIzaSyAek6CbWUct6QjJwoun0QKW8lvNxoB1hbQ",
+    //     authDomain: "roofpik-26701.firebaseapp.com",
+    //     databaseURL: "https://roofpik-26701.firebaseio.com",
+    //     storageBucket: "roofpik-26701.appspot.com",
+    // };
     firebase.initializeApp(config);
     </script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <script src="lib/ionic/js/ionic.bundle.js"></script>
     <script src="lib/ionic-material/dist/ionic.material.min.js"></script>
-      <!-- cordova script (this will be a 404 during development) -->
-      <script src="lib/ngCordova/dist/ng-cordova.min.js"></script>
-      <script src="cordova.js"></script>
+    <!-- cordova script (this will be a 404 during development) -->
+    <script src="lib/ngCordova/dist/ng-cordova.min.js"></script>
+    <script src="cordova.js"></script>
     <!-- your app's js -->
     <script src="js/app.js"></script>
     <script src="js/config.js"></script>
@@ -52,16 +51,15 @@
     <script src="js/controllers/MotionCtrl.js"></script>
     <script src="js/controllers/projectCtrl.js"></script>
     <script src="js/controllers/testCtrl.js"></script>
-
-
     <!-- Reviews -->
-
     <script src="js/controllers/reviews/rating-directive.js"></script>
     <script src="js/controllers/reviews/residential-review-ctrl.js"></script>
     <script src="js/controllers/reviews/locality-review-ctrl.js"></script>
     <script src="js/controllers/reviews/under-construction-review-ctrl.js"></script>
     <script src="js/controllers/reviews/selfie-ctrl.js"></script>
     <script src="js/controllers/network-ctrl.js"></script>
+    <script src="js/controllers/verifyMobileCtrl.js"></script>
+    <script src="js/controllers/checkMobileCtrl.js"></script>
 </head>
 
 <body ng-app="starter">

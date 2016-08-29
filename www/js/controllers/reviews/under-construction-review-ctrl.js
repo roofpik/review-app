@@ -7,6 +7,7 @@ app.controller('underConstructionReviewCtrl', function($scope, $ionicPopup, $sta
     $scope.userName = (JSON.parse(window.localStorage['user'] || '{}')).name;
     // $scope.projectName = "Vipul Greens";
     $scope.review = {};
+    
 
     $scope.identities = [
         { id: 'owner', name: 'Owner', imgsrc: 'img/review/owner_grey.png' },
@@ -257,7 +258,7 @@ app.controller('underConstructionReviewCtrl', function($scope, $ionicPopup, $sta
     }
 
     $scope.goBack = function() {
-        $state.go('app.projects');
+        $state.go('projects');
     }
 
 });

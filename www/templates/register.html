@@ -105,7 +105,7 @@
       margin: 10px 10px 10px 0;
     }
     </style>
-    <ion-content class="has-header">
+    <ion-content class="has-header" cache-view="false">
         <form name="signupForm" novalidate ng-submit="signupForm.$valid && signup()">
             <center>
                 <h4>Register With Us</h4>
@@ -120,8 +120,8 @@
                     <label class="item item-input ufname">
                         <input class="signup-roofpik" type="text" placeholder="First name" ng-model="user.fname" required>
                     </label>
-                    <label class="item item-input ulname" required>
-                        <input class="signup-roofpik" type="text" placeholder="Last name" ng-model="user.lname">
+                    <label class="item item-input ulname" >
+                        <input class="signup-roofpik" type="text" placeholder="Last name" ng-model="user.lname" required>
                     </label>
                     <label class="item item-input ion-ios-email-outline">
                         <input class="signup-roofpik" type="email" placeholder="Email address" ng-model="user.email" required>
@@ -131,13 +131,13 @@
                     </label>
                     <label class="item item-input ion-home">
                         <!--  <textarea ng-keyup="autoExpand($event)" id="TextArea" placeholder="Street address" ng-model="user.address"> </textarea> -->
-                        <input class="signup-roofpik" type="text" placeholder="Home address" ng-model="user.address">
+                        <input class="signup-roofpik" type="text" placeholder="Home address" ng-model="user.address" required>
                     </label>
                     <label class="item item-input ufname">
-                        <input class="signup-roofpik" type="number" placeholder="Tower #" ng-model="user.tower">
+                        <input class="signup-roofpik" type="text" placeholder="Tower/Block #" ng-model="user.tower">
                     </label>
                     <label class="item item-input  ulname">
-                        <input class="signup-roofpik" type="number" placeholder="Flat/House #" ng-model="user.flat">
+                        <input class="signup-roofpik" type="text" placeholder="Flat/House #" ng-model="user.flat">
                     </label>
                     <label class=" radio-inline gender ">
                         Gender

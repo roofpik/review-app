@@ -8,6 +8,7 @@ app.controller('residentialReviewCtrl', function($scope, $ionicPopup, $statePara
     // $scope.userId = window.localStorage.getItem("userUid");
     $scope.userId = (JSON.parse(window.localStorage['user'] || '{}')).uid;
     $scope.userName = (JSON.parse(window.localStorage['user'] || '{}')).name;
+    
 
     $scope.review = {};
 
@@ -277,7 +278,7 @@ app.controller('residentialReviewCtrl', function($scope, $ionicPopup, $statePara
     }
 
     $scope.goBack = function() {
-        $state.go('register');
+        $state.go('projects');
     }
 
 });
