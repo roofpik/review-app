@@ -1,0 +1,15 @@
+<ion-view>
+	<ion-content>
+	<button class="button button-block button-balanced" ng-click="getLocalUsers()">Show pending</button>
+	<div class="card" ng-show="showUsersCalled">
+		<ion-list>
+			<ion-item ng-repeat="user in allUsers">
+				<p><b>{{$index+1}}. {{user.data.fname}} {{user.data.lname}}</b></p>
+				<p style="margin-left:14px;">{{user.data.email}}</p>
+				<p style="margin-left:14px;">{{user.mobno}}</p>
+			</ion-item>
+		</ion-list>
+	</div>
+		<!-- <button class="button button-block button-assertive" ng-click="fetch()">Fetch Data</button> -->
+	</ion-content>
+</ion-view>

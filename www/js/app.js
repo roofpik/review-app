@@ -7,6 +7,8 @@ var app = angular.module('starter', ['ionic', 'ionic-material', 'ngCordova']);
 
 var db = firebase.database();
 
+var appState = 'online';
+
 app.run(function($ionicPlatform, $cordovaNetwork, $rootScope, $interval, $state, $ionicHistory) {
     $ionicPlatform.ready(function() {
         // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
@@ -23,11 +25,13 @@ app.run(function($ionicPlatform, $cordovaNetwork, $rootScope, $interval, $state,
 
             // listen for Online event
             $rootScope.$on('$cordovaNetwork:online', function(event, networkState) {
+                appState = 'online';
                 $ionicHistory.goBack();
             })
 
             // listen for Offline event
             $rootScope.$on('$cordovaNetwork:offline', function(event, networkState) {
+                appState = 'offline';
                 $state.go('network');
             })
 
@@ -45,14 +49,9 @@ app.run(function($ionicPlatform, $cordovaNetwork, $rootScope, $interval, $state,
 
 
 function checkLocalStorage(item){
-
-   if (localStorage.getItem(item) === null ||  typeof window.localStorage[item] === 'undefined') {
-
+    if (localStorage.getItem(item) === null ||  typeof window.localStorage[item] === 'undefined') {
       return false
-
-    }
-    else{
+    } else{
       return true
     }
-
 }

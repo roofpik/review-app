@@ -1,5 +1,5 @@
 <ion-view view-title="Start" cache-view="false">
-    <ion-header-bar align-title="center" class="bar-dark">
+    <ion-header-bar align-title="center" class="bar-dark" ng-click="goToSyncAndFetch()">
         <h1 class="title">Roofpik Admin</h1>
     </ion-header-bar>
     <ion-content class="has-header">
@@ -24,12 +24,6 @@
                     <button class="button button-outline button-positive" ng-disabled="roofpikUser.$invalid">
                         Submit
                     </button>
-                    
-                </div>
-                <div class="item">
-                <a  ng-click="checkMobile()">
-                        Check Mobile
-                    </a>
                 </div>
             </form>
 

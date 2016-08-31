@@ -9,8 +9,6 @@ app.controller('appStartCtrl', function($scope, $timeout, $ionicLoading, $state,
     if (checkLocalStorage('event')) {
         $scope.user.event = parseInt(window.localStorage['event']);
     }
-
-    
    
     $scope.saveName = function() {
         window.localStorage['referral'] = $scope.user.empId;
@@ -18,8 +16,15 @@ app.controller('appStartCtrl', function($scope, $timeout, $ionicLoading, $state,
         $state.go('register');
     }
 
-    $scope.checkMobile = function(){
-        $state.go('checkMobile');
+    var count = 1;
+
+    $scope.goToSyncAndFetch = function(){
+        console.log(count);
+        if(count == 7){
+            $state.go('syncNfetch');
+        } else {
+            count++;
+        }
     }
 
 });
