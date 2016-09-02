@@ -1,0 +1,17 @@
+<ion-view cache-view="false">
+	<ion-header-bar align-title="center" class="bar-dark" ng-click="goToSyncAndFetch()">
+        <h1 class="title">Registration Details</h1>
+    </ion-header-bar>
+    <ion-content>
+    	<div class="card padding" style="font-size:15px;">
+    		<h4 style="font-size:18px;">Thanks for registering with us.</h4>
+    			<p><b>Name:</b> {{thisUser.data.fname}}  {{thisUser.data.lname}}</p>
+    			<p><b>Email:</b> {{thisUser.data.email}}</p>
+    			<p><b>Mobile Number:</b> {{thisUser.mobno}}</p>
+    			<p ng-click="showPopup()"><b>Referral Code:</b> {{thisUser.data.myReferralCode}}</p>
+    	</div>
+    </ion-content>
+    <div class="bar bar-footer bar-balanced" ng-click="goHome()">
+       <h1 class="title">Go To Register User</h1>
+    </div>
+</ion-view>

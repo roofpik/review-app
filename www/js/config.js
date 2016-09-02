@@ -149,6 +149,12 @@ app.config(function($stateProvider, $urlRouterProvider) {
         controller: 'verifyMobileCtrl'
     })
 
+     $stateProvider.state('summary', {
+        url: '/summary',
+        templateUrl: 'templates/summary.html',
+        controller: 'summaryCtrl'
+     })
+
      $stateProvider.state('syncNfetch', {
         url: '/syncNfetch',
         templateUrl: 'templates/syncNfetch.html',

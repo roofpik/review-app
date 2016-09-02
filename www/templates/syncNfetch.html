@@ -1,7 +1,15 @@
-<ion-view>
-	<ion-content>
-	<button class="button button-block button-balanced" ng-click="getLocalUsers()">Show pending</button>
-	<div class="card" ng-show="showUsersCalled">
+<ion-view cache-view="false">
+    <ion-header-bar align-title="center" class="bar-dark">
+    	<div class="buttons">
+    		<button class="button icon ion-arrow-left-c" ng-click="goHome()"></button>
+    	</div>
+        <h1 class="title">Syn Users</h1>
+    </ion-header-bar>
+
+	<ion-content class="has-header">
+	<!-- <button class="button button-block button-balanced" ng-click="getLocalUsers()">Show pending</button> -->
+	<div class="card">
+		<h4 ng-show="showMsg" style="text-align:center;">No Users to Sync</h4>
 		<ion-list>
 			<ion-item ng-repeat="user in allUsers">
 				<p><b>{{$index+1}}. {{user.data.fname}} {{user.data.lname}}</b></p>
@@ -12,4 +20,7 @@
 	</div>
 		<!-- <button class="button button-block button-assertive" ng-click="fetch()">Fetch Data</button> -->
 	</ion-content>
+	<div class="bar bar-footer bar-balanced" ng-click="sync()" ng-show="!showMsg">
+	   <h1 class="title">Sync</h1>
+	</div>
 </ion-view>

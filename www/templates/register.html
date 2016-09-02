@@ -109,10 +109,10 @@
         <h1 class="title">Register</h1>
     </ion-header-bar>
     <ion-content class="has-header" cache-view="false">
-        <form name="signupForm" novalidate ng-submit="signupForm.$valid && signup()">
+        <form name="signupForm" novalidate ng-submit="signup()">
             <center>
                 <h4>Register With Us</h4>
-                <div class="list list-inset ">
+                <div class="list list-inset " ng-click="enableSubmit()">
                     <label>
                         <span>Information provided is highly confidential and is only for verification purpose.</span>
                     </label>
@@ -134,7 +134,7 @@
                     </label>
                     <label class="item item-input ion-home">
                         <!--  <textarea ng-keyup="autoExpand($event)" id="TextArea" placeholder="Street address" ng-model="user.address"> </textarea> -->
-                        <input class="signup-roofpik" type="text" placeholder="Home address" ng-model="user.address.location" required>
+                        <input class="signup-roofpik" type="text" placeholder="Locality/Project Name" ng-model="user.address.location" required>
                     </label>
                     <label class="item item-input ufname">
                         <input class="signup-roofpik" type="text" placeholder="Tower/Block #" ng-model="user.address.tower">
@@ -155,7 +155,7 @@
                         <input type="checkbox" name="terms" value="" ng-model="user.terms" required> I agree to Terms and Conditions
                     </label>
                 </div>
-                <input type="submit" ng-disabled="signupForm.$invalid || !user.terms" class="button button-block button-dark" value="Next">
+                <input type="submit" ng-disabled="(signupForm.$invalid || !user.terms) && (disableSubmitBtn || !user.terms)" class="button button-block button-dark" value="Next">
             </div>
         </form>
     </ion-content>
